@@ -206,7 +206,7 @@ public class DecomposeNtoN {
 			listMapResToCU = newlistMap;
 		}
 
-//        System.out.println("分配情况：");
+//        System.out.println("resources assignment:");
 //        for (int i = 0; i < listMapResToCU.size(); ++i)
 //        {
 //            System.out.println("-----: " + i);
@@ -226,7 +226,7 @@ public class DecomposeNtoN {
 
 			System.out.println(
 					"\n----------------\nSolution: ****************************************************************************");
-			System.out.println("分配情况：");
+			System.out.println("resources assignment:");
 			System.out.println("-----: " + i);
 			for (String str : resToCU.keySet()) {
 				System.out.println(str + " - " + resToCU.get(str));
@@ -297,9 +297,12 @@ public class DecomposeNtoN {
 		mapDecompose = Cooperation.cooperationProgram(mapDecompose, mapDFGs,
 				mainProgram, pileMainList); // 在mapDecompose基础上添加数据依赖的内容
 
-		System.out.println("数据控制协作通信个数：" + (channelCDMessage - 1));
-		System.out.println("数据依赖协作通信个数：" + (cooperation.channelDDMessage - 1));
-		System.out.println("数据共享协作通信个数：" + (cooperation.syncMessage - 1));
+//		System.out.println("数据控制协作通信个数：" + (channelCDMessage - 1));
+//		System.out.println("数据依赖协作通信个数：" + (cooperation.channelDDMessage - 1));
+//		System.out.println("数据共享协作通信个数：" + (cooperation.syncMessage - 1));
+		System.out.println("count of data control communication:" + (channelCDMessage - 1));
+		System.out.println("count of data denpendence communication:" + (cooperation.channelDDMessage - 1));
+		System.out.println("count of data sync communication:" + (cooperation.syncMessage - 1));
 
 		print(mapDecompose);
 		return mapDecompose;

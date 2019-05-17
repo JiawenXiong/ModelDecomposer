@@ -80,8 +80,10 @@ public class Cooperation {
 
 									if (whetherInSameOriginalTrigger(listDD,
 											baseLineInSDG, before)) {
+//										System.out.println(
+//												synVar + " 在原始程序同一个trigger里");
 										System.out.println(
-												synVar + " 在原始程序同一个trigger里");
+												synVar + " is in the original event trigger");
 										int type = getChannelPlaceType(listDD,
 												baseLineInSDG, before);
 										if (type == 0) {

@@ -22,8 +22,7 @@ import ntesec.juli.utils.GraphvizUtil;
  */
 public class App {
 
-	public static void main_AST() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void main_AST(String fileName) throws IOException {
 
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 
@@ -40,8 +39,7 @@ public class App {
 		System.out.println("\nCopyright by JuLi. © 2016–2019, NTESEC.");
 	}
 
-	public static void main_CFG() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void main_CFG(String fileName) throws IOException {
 
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 
@@ -51,7 +49,7 @@ public class App {
 			mapCFGs.put(key, cfg.getCFGfromAST(mapAst.get(key)));
 		}
 
-		System.out.println("输出 CFG :" + mapCFGs.size());
+		System.out.println("output CFG :" + mapCFGs.size());
 		for (String key : mapCFGs.keySet()) {
 			System.out.println("\nCFG ----------\n");
 
@@ -61,8 +59,7 @@ public class App {
 		System.out.println("\nCopyright by JuLi. © 2016–2019, NTESEC.");
 	}
 
-	public static void main_DFG() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void main_DFG(String fileName) throws IOException {
 
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 		Map<String, Set<String>> mapvars = AST.mapVars;
@@ -80,7 +77,7 @@ public class App {
 					mapvars.get(key)));
 		}
 
-		System.out.println("输出 DFG :" + mapCFGs.size());
+		System.out.println("output DFG :" + mapCFGs.size());
 		for (String key : mapCFGs.keySet()) {
 			System.out.println("\nDFG ----------\n");
 
@@ -90,8 +87,7 @@ public class App {
 		System.out.println("\nCopyright by JuLi. © 2016–2019, NTESEC.");
 	}
 
-	public static void main_PDG() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void main_PDG(String fileName) throws IOException {
 
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 		Map<String, Set<String>> mapvars = AST.mapVars;
@@ -117,7 +113,7 @@ public class App {
 
 		System.out.println("mainProcess: " + AST.mainProgram + "\n");
 
-		System.out.println("输出 PDG :" + mapCFGs.size());
+		System.out.println("output PDG :" + mapCFGs.size());
 		for (String key : mapPDGs.keySet()) {
 			System.out.println("\nPDG ---------- " + key + "\n");
 
@@ -128,8 +124,7 @@ public class App {
 		System.out.println("\nCopyright by JuLi. © 2016–2019, NTESEC.");
 	}
 
-	public static void main_SDG() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void main_SDG(String fileName) throws IOException {
 
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 		Map<String, Set<String>> mapvars = AST.mapVars;
@@ -159,7 +154,7 @@ public class App {
 
 		System.out.println("mainProcess: " + AST.mainProgram + "\n");
 
-		System.out.println("输出 SDG :" + mapSDG.size());
+		System.out.println("output SDG :" + mapSDG.size());
 		for (String key : mapSDG.keySet()) {
 			System.out.println("\nSDG ---------- " + key + "\n");
 
@@ -170,12 +165,11 @@ public class App {
 		System.out.println("\nCopyright by JuLi. © 2016–2019, NTESEC.");
 	}
 
-	public static void main_Decompose() throws IOException {
-		String intputFileName = "resources/input.imc";
+	public static void main_Decompose(String fileName) throws IOException {
 		// String fileName = "resources/stm32_powerpc.imc";
 
 		AST ast = new AST();
-		Map<String, ASTNode> mapAst = AST.genAST(intputFileName);
+		Map<String, ASTNode> mapAst = AST.genAST(fileName);
 		Map<String, Set<String>> mapvars = AST.mapVars;
 
 		CFG cfg = new CFG();
@@ -203,7 +197,7 @@ public class App {
 
 		System.out.println("mainProcess: " + AST.mainProgram + "\n");
 
-		System.out.println("输出 SDG :" + mapSDG.size());
+		System.out.println("output SDG :" + mapSDG.size());
 		for (String key : mapSDG.keySet()) {
 			System.out.println("\nSDG ---------- " + key + "\n");
 			SDG.printSDG(mapSDG.get(key));
@@ -224,15 +218,17 @@ public class App {
 //        main_PDG();
 //        main_SDG();
 		if (args.length < 1) {
-			System.out.println("Usage: java -jar ModelDecomposer.jar <path of original model>");
-			System.out.println("Example: java -jar ModelDecomposer.jar resources/input.imc");
-		}else {
-			main_Decompose();
+			System.out.println(
+					"Usage: java -jar ModelDecomposer.jar <path of original model>");
+			System.out.println(
+					"Example: java -jar ModelDecomposer.jar resources/input.imc");
+		} else {
+//			main_Decompose("resources/input.imc");
+			main_Decompose("resources/input.imc");
 		}
 	}
 
-	public static void example_cars() throws IOException {
-		String fileName = "resources/input.imc";
+	public static void example_cars(String fileName) throws IOException {
 
 		AST ast = new AST();
 		Map<String, ASTNode> mapAst = AST.genAST(fileName);
@@ -263,7 +259,7 @@ public class App {
 
 		System.out.println("mainProcess: " + AST.mainProgram + "\n");
 
-		System.out.println("输出 SDG :" + mapSDG.size());
+		System.out.println("output SDG :" + mapSDG.size());
 		for (String key : mapSDG.keySet()) {
 			System.out.println("\nSDG ---------- " + key + "\n");
 

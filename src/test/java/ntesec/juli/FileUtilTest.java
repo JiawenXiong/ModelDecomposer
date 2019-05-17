@@ -33,14 +33,14 @@ public class FileUtilTest extends TestCase {
 	}
 
 	public void testRead() {
-		String str = FileUtil.readFile("resources/sortingExample.imc");
+		String str = FileUtil.readFile("resources/test.imc");
 		assertEquals("test", str.trim());
 	}
 
 	public void testWrite() {
-		String str = FileUtil.readFile("resources/sortingExample.imc");
-		FileUtil.writeFile(str.trim() + "_1", "resources/sortingExample_1.imc");
-		String str2 = FileUtil.readFile("resources/sortingExample_1.imc");
+		String str = FileUtil.readFile("resources/test.imc");
+		FileUtil.writeFile(str.trim() + "_1", "resources/test_1.imc");
+		String str2 = FileUtil.readFile("resources/test_1.imc");
 		assertEquals("test_1", str2.trim());
 	}
 }
